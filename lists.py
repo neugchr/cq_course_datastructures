@@ -31,8 +31,11 @@ for a in a_frag:
 masterlist = []
 for i in squared:
     masterlist.append(i)
-for b in b_frag:
-    masterlist.append(b)
+# another way of duing the same
+# extend takes the content of a list and adds them as individual items to them
+# other list
+masterlist.extend(b_frag)
+# this is functionally the same es masterlist = masterlist+b_frag
 
 print("the master list is\n")
 print(masterlist)
