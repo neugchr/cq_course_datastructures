@@ -39,3 +39,9 @@ masterlist.extend(b_frag)
 
 print("the master list is\n")
 print(masterlist)
+
+lst = ['one','two','three']
+print(lst)
+rem = input('remove which element')
+lst.remove(rem)
+print(lst)
