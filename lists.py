@@ -40,8 +40,19 @@ masterlist.extend(b_frag)
 print("the master list is\n")
 print(masterlist)
 
+#deletion from list
 lst = ['one','two','three']
 print(lst)
-rem = input('remove which element')
-lst.remove(rem)
+try:
+    lst.remove(input('remove which element?\n'))
+except:
+    print("removal failed")
+else:
+    pass
+print(lst)
+
+# insertion into list
+print(lst)
+print("now inserting 'foo' at position 1")
+lst.insert(1, "foo")
 print(lst)
