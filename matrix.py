@@ -35,6 +35,20 @@ class Matrix:
         else:
             print('index out of bounds')
 
+    def set_col(self, x, values):
+        if len(values) != len(self.data[x]):
+            print("error: length of assignment doesn't match column length")
+        else:
+            self.data[x] = values.copy()
+
+    def set_row(self, y, values):
+        if len(values) != len(self.data):
+            print("error: length of assignment doesn't match column length")
+        else:
+            for i in range(0,len(values)):
+                self.set(i, y, values[i])
+
+
     def get(self, x, y):
         try:
             return(self.data[x][y])
@@ -42,6 +56,15 @@ class Matrix:
             pass
         else:
             pass
+
+    def get_col(self, x):
+        return(self.data[x])
+
+    def get_row(self, y):
+        buff = []
+        for sublist in self.data:
+            buff.append(sublist[y])
+        return(buff)
 
     def print(self):
         print(self.__str__())
