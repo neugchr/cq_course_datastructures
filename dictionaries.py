@@ -46,46 +46,45 @@ for k in phonebook:
 ######################
 # ACTUAL CODE
 ######################
-run = True
-while run:
+run = True  # just keep looping on ...
+while run:  # and on until user exits out of the loop
+    # ask user what he wants to do
     print("\nwhat do you want to do?\n"
           +"show phonebook (s)\n"
           +"add entry (a)\n"
           +"delete entry (d)\n"
           +"edit entry (e)\n"
           +"exit program (x)\n")
-    inp = input()
-    if inp.lower() == 'x':
-        run = False
+    inp = input() # save the answer into a variable inp
+    if inp.lower() == 'x':  # check if the user wants to exit
+        run = False         # don't continue the loop
     elif inp.lower() == 's':
-        for e in phonebook:
-            print(e)
-            for i in phonebook[e]:
-                print('\t', i, ':', phonebook[e][i].replace('\n','\n\t\t'))
+        for e in phonebook: # for every key in the phonebook
+            print(e)        # print it
+            for i in phonebook[e]:  # and then loop over al entries in the subdict and print them
+                print('\t', i, ':', phonebook[e][i].replace('\n','\n\t\t')) # this just formats the text for printing
     elif inp.lower() == 'a':
         new = input('enter name: ')
-        phonebook[new] = {}
+        phonebook[new] = {}             # add a new entry where key is the entered name
         for item in ['Address', 'Number', 'Birthdate', 'E-mail']:
-            s = "enter "+item+': '
-            phonebook[new][item] = input(s)
+            s = "enter "+item+': '  # ask for every field of the subdict what
+            phonebook[new][item] = input(s) # for a value and add it to subdict
     elif inp.lower() == 'd':
         d = input('which entry to delete? ')
-        try:
-            del(phonebook[d])
-        except:
+        try:        # try except else comes probably later
+            del(phonebook[d])   # all you need to know is that here I
+        except:                 # save the program if you enter an invalid key
             print('deletion failed please check spelling')
         else:
             pass
-    elif inp.lower() == 'e':
-        e = input('which entry to edit? ')
-        try:
-            e2 = input('change:')
-            for item in phonebook[e]:
-                if item == e2:
-                    phonebook[e][item] = input('new '+item+': ')
-        except:
-            print('edit failed please check spelling')
-        else:
-            pass
+    elif inp.lower() == 'e':    # if user wants to edit
+        e = input('which entry to edit? ')  # ask which entry
+        e2 = input('change:')  # ask what user wants to change (e.g. address or email)
+        for item in phonebook[e]: # check if the item entered is in the subdict
+            if item == e2:
+                phonebook[e][item] = input('new '+item+': ')
+            else:
+                print('edit failed, please check spelling')
+
     elif inp.lower() == 'x':
         run = False
