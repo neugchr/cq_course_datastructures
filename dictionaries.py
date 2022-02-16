@@ -81,10 +81,13 @@ while run:  # and on until user exits out of the loop
         e = input('which entry to edit? ')  # ask which entry
         e2 = input('change:')  # ask what user wants to change (e.g. address or email)
         for item in phonebook[e]: # check if the item entered is in the subdict
+            changed = False     # remember if something changed
             if item == e2:
                 phonebook[e][item] = input('new '+item+': ')
-            else:
-                print('edit failed, please check spelling')
+                changed = True  # if the key was in the subdict something has changed
+            if changed == False:
+                print('edit failed, please check spelling') # if the key was not in the subdict
+                                        #we inform the user that nothing was changed
 
     elif inp.lower() == 'x':
         run = False
